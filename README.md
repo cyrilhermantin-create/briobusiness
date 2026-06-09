@@ -31,8 +31,8 @@ Aider les entreprises locales à croître en trouvant rapidement les bons parten
 - Climatisation : besoin permanent (climat tropical)
 
 ### 🔗 En ligne
-- **Site vitrine** : https://briobusiness.gp (ou GitHub Pages)
-- **Contact** : contact@briobusiness.gp
+- **Site vitrine** : https://cyrilhermantin-create.github.io/briobusiness/
+- - **Contact** : briobusiness.gp@gmail.com
 - **Téléphone** : +590 691 28 77 50
 
 - # 🚀 BRIO BUSINESS - Site Vitrine Professionnel
