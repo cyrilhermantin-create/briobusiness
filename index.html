@@ -12,640 +12,767 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
+            background-color: #f9f9f9;
         }
 
-        :root {
-            --primary: #2E75B6;
-            --secondary: #00B050;
-            --accent: #FFA500;
-            --light: #F5F5F5;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, #1a4d88 100%);
-            color: white;
-            padding: 15px 0;
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
-            font-size: 24px;
+        nav .logo {
             font-weight: bold;
+            font-size: 1.5rem;
+            color: #FF6B35;
         }
 
-        .logo span {
-            color: var(--secondary);
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
         }
 
         nav a {
-            color: white;
             text-decoration: none;
-            margin-left: 30px;
+            color: #333;
+            font-weight: 500;
             transition: color 0.3s;
         }
 
         nav a:hover {
-            color: var(--secondary);
+            color: #FF6B35;
         }
 
+        /* Hero Section - CTA Principal */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #0d3a66 100%);
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
             color: white;
-            padding: 80px 20px;
+            padding: 4rem 2rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
         .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
             opacity: 0.95;
         }
 
         .cta-button {
-            background: var(--secondary);
-            color: white;
-            padding: 14px 40px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(0, 176, 80, 0.3);
+            background: white;
+            color: #FF6B35;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         .cta-button:hover {
-            background: #00963f;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 176, 80, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            background: #f0f0f0;
         }
 
+        .cta-button.secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Floating CTA Button */
+        .floating-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #FF6B35;
+            color: white;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+            z-index: 200;
+            animation: float 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .floating-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.6);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Stats Section */
         .stats {
-            background: var(--light);
-            padding: 40px 20px;
+            background: white;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
             text-align: center;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .stat-box {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        .stat {
+            padding: 1rem;
         }
 
         .stat-number {
-            font-size: 36px;
+            font-size: 2.5rem;
             font-weight: bold;
-            color: var(--primary);
+            color: #FF6B35;
+            margin-bottom: 0.5rem;
         }
 
         .stat-label {
             color: #666;
-            margin-top: 10px;
+            font-size: 0.95rem;
         }
 
+        /* Services Section */
         .services {
-            padding: 60px 20px;
+            padding: 3rem 2rem;
+            background: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
             text-align: center;
-            font-size: 32px;
-            color: #222;
-            margin-bottom: 40px;
+            color: #333;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
         .service-card {
             background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border-top: 4px solid var(--primary);
-            transition: transform 0.3s;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
         }
 
         .service-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
         .service-card h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 0.5rem;
+            color: #FF6B35;
         }
 
         .service-card p {
             color: #666;
+            font-size: 0.95rem;
         }
 
+        /* Sectors Section */
         .sectors {
-            background: var(--light);
-            padding: 60px 20px;
+            padding: 3rem 2rem;
+            background: white;
         }
 
         .sectors-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
         }
 
-        .sector-item {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            border-left: 4px solid var(--secondary);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .sector-item h4 {
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .sector-item p {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .why-us {
-            padding: 60px 20px;
-        }
-
-        .features-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .feature-item {
-            display: flex;
-            gap: 15px;
-        }
-
-        .feature-check {
-            color: var(--secondary);
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .feature-text h4 {
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .feature-text p {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .contact-section {
-            background: linear-gradient(135deg, var(--primary) 0%, #0d3a66 100%);
+        .sector-card {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
             color: white;
-            padding: 60px 20px;
-            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .sector-card:hover {
+            transform: scale(1.05);
+        }
+
+        .sector-card h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .sector-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Why Us Section */
+        .why-us {
+            padding: 3rem 2rem;
+            background: #f9f9f9;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #FF6B35;
+        }
+
+        .benefit h4 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .benefit p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 3rem 2rem;
+            background: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            border-top: 3px solid #FF6B35;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #FF6B35;
+            font-size: 0.9rem;
+        }
+
+        /* Form Section */
+        .contact-section {
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+            color: white;
         }
 
         .contact-section h2 {
-            font-size: 32px;
-            margin-bottom: 30px;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
         }
 
-        .contact-form {
-            max-width: 500px;
+        .form-container {
+            max-width: 600px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 8px;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
 
         .form-group {
-            margin-bottom: 15px;
-            text-align: left;
+            margin-bottom: 1.5rem;
         }
 
-        .form-group label {
+        label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
         }
 
-        .form-group input,
-        .form-group textarea {
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
             width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 4px;
-            font-size: 14px;
-            font-family: Arial, sans-serif;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
         }
 
-        .form-group textarea {
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #FF6B35;
+            box-shadow: 0 0 5px rgba(255, 107, 53, 0.3);
+        }
+
+        textarea {
             resize: vertical;
             min-height: 100px;
         }
 
-        .submit-btn {
-            width: 100%;
-            background: var(--secondary);
+        .form-submit {
+            background: #FF6B35;
             color: white;
-            padding: 14px;
+            padding: 1rem 2rem;
             border: none;
-            border-radius: 4px;
-            font-size: 16px;
+            border-radius: 5px;
+            font-size: 1rem;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s;
+            width: 100%;
+            transition: background 0.3s;
         }
 
-        .submit-btn:hover {
-            background: #00963f;
-            transform: translateY(-2px);
+        .form-submit:hover {
+            background: #E55A2B;
         }
 
-        footer {
-            background: #222;
-            color: white;
+        .form-note {
+            font-size: 0.8rem;
+            color: #666;
             text-align: center;
-            padding: 30px 20px;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem;
+            text-align: center;
         }
 
         .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
             text-align: left;
         }
 
-        .footer-section h4 {
-            margin-bottom: 15px;
-            color: var(--secondary);
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #FF6B35;
         }
 
-        .footer-section p, .footer-section a {
-            color: #aaa;
-            font-size: 14px;
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #ccc;
             text-decoration: none;
-            display: block;
-            margin-bottom: 8px;
+            transition: color 0.3s;
         }
 
         .footer-section a:hover {
-            color: var(--secondary);
+            color: #FF6B35;
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            nav a {
-                margin-left: 15px;
-                font-size: 14px;
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
             }
 
             .hero h1 {
-                font-size: 28px;
+                font-size: 2rem;
             }
 
-            .section-title {
-                font-size: 24px;
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.8rem;
+                font-size: 0.95rem;
+            }
+
+            .cta-button.secondary {
+                display: block;
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+
+            .floating-cta {
+                bottom: 1rem;
+                right: 1rem;
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .footer-content {
+                text-align: center;
+            }
+
+            .footer-section {
+                text-align: center;
             }
         }
 
-        .testimonials {
-            background: var(--light);
-            padding: 60px 20px;
-        }
+        @media (max-width: 480px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
 
-        .testimonial-card {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            border-left: 4px solid var(--secondary);
-        }
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
 
-        .testimonial-text {
-            color: #666;
-            margin-bottom: 12px;
-            font-style: italic;
-        }
+            .hero {
+                padding: 2rem 1rem;
+            }
 
-        .testimonial-author {
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 14px;
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .cta-button {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">🚀 BRIO <span>BUSINESS</span></div>
-                <nav>
-                    <a href="#services">Services</a>
-                    <a href="#sectors">Secteurs</a>
-                    <a href="#contact">Contact</a>
-                </nav>
-            </div>
-        </div>
-    </header>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">🚀 BRIO BUSINESS</div>
+        <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#sectors">Secteurs</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
+    <!-- Hero Section avec CTA Principal -->
     <section class="hero">
-        <div class="container">
+        <div class="hero-content">
             <h1>Accélérez votre croissance avec les bons partenaires</h1>
-            <p>Nous mettons en relation les entreprises de la Guadeloupe avec les meilleurs prestataires</p>
-            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Parlons de votre projet</button>
+            <p>Nous mettons en relation les entreprises de la Guadeloupe avec les meilleurs prestataires en énergies renouvelables, climatisation et services numériques.</p>
+            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                📋 Demandez votre consultation gratuite
+            </button>
+            <a href="tel:+590691287750" class="cta-button secondary">
+                ☎️ Appelez-nous maintenant
+            </a>
         </div>
     </section>
 
+    <!-- Stats -->
     <section class="stats">
-        <div class="container">
-            <h2 style="font-size: 28px;">La taille du marché en Guadeloupe en chiffres</h2>
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="stat-number">2000+</div>
-                    <div class="stat-label">PME & commerces</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">15-25%</div>
-                    <div class="stat-label">Économies potentielles</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">4</div>
-                    <div class="stat-label">Secteurs clés</div>
-                </div>
-            </div>
+        <div class="stat">
+            <div class="stat-number">2000+</div>
+            <div class="stat-label">PME & Commerces</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">15-25%</div>
+            <div class="stat-label">Économies Potentielles</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">48h</div>
+            <div class="stat-label">Délai de Mise en Relation</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Secteurs Clés</div>
         </div>
     </section>
 
-    <section class="services">
+    <!-- Services -->
+    <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title">Nos services</h2>
-            <div class="services-grid" id="services">
+            <h2 class="section-title">Nos Services</h2>
+            <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">☀️</div>
-                    <h3>Énergies renouvelables</h3>
-                    <p>Installateurs solaires qualifiés, maintenance, consulting transition énergétique</p>
+                    <h3>Énergies Renouvelables</h3>
+                    <p>Installateurs solaires qualifiés, maintenance, consulting transition énergétique. Aides gouvernementales jusqu'à 9600€.</p>
                 </div>
-
                 <div class="service-card">
                     <div class="service-icon">❄️</div>
                     <h3>Climatisation</h3>
-                    <p>Experts maintenance régulière, interventions d'urgence, contrats adaptés</p>
+                    <p>Experts maintenance régulière, interventions d'urgence, contrats adaptés. Essential en climat tropical.</p>
                 </div>
-
                 <div class="service-card">
                     <div class="service-icon">📧</div>
-                    <h3>Services digitaux</h3>
-                    <p>Gestion emails, réponse avis Google, support chat, standard téléphonique</p>
+                    <h3>Services Numériques</h3>
+                    <p>Gestion emails, réponse avis Google, support chat, standard téléphonique. Boostez votre présence en ligne.</p>
                 </div>
-
                 <div class="service-card">
                     <div class="service-icon">🔧</div>
                     <h3>Externalisation SAV</h3>
-                    <p>Service après-vente délégué, réduction coûts 15-25%, support administratif</p>
+                    <p>Service après-vente délégué, réduction coûts 15-25%, support administratif. Dégagez du temps pour votre cœur de métier.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Sectors -->
     <section class="sectors" id="sectors">
         <div class="container">
-            <h2 class="section-title">Secteurs couverts</h2>
+            <h2 class="section-title">Secteurs Couverts</h2>
             <div class="sectors-grid">
-                <div class="sector-item">
+                <div class="sector-card">
                     <h4>🏨 Tourisme & Hôtellerie</h4>
-                    <p>Efficacité énergétique, service client premium, présence Google</p>
+                    <p>Efficacité énergétique, service client premium, présence Google.</p>
                 </div>
-
-                <div class="sector-item">
-                    <h4>🏪 Commerces indépendants</h4>
-                    <p>Croissance locale, gestion digitale, avis clients, support administratif</p>
+                <div class="sector-card">
+                    <h4>🏪 Commerces Indépendants</h4>
+                    <p>Croissance locale, gestion digitale, avis clients, support administratif.</p>
                 </div>
-
-                <div class="sector-item">
-                    <h4>⚡ Entreprises solaires</h4>
-                    <p>Leads qualifiées, prospection B2B, carnet de commandes optimisé</p>
+                <div class="sector-card">
+                    <h4>⚡ Entreprises Solaires</h4>
+                    <p>Leads qualifiées, prospection B2B, carnet de commandes optimisé.</p>
                 </div>
-
-                <div class="sector-item">
+                <div class="sector-card">
                     <h4>🍽️ Restauration & Loisirs</h4>
-                    <p>Service client 24/7, présence en ligne, maintenance installations</p>
+                    <p>Service client 24/7, présence en ligne, maintenance installations.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Why Us -->
     <section class="why-us">
         <div class="container">
             <h2 class="section-title">Pourquoi nous choisir ?</h2>
-            <div class="features-list">
-                <div class="feature-item">
-                    <div class="feature-check">✓</div>
-                    <div class="feature-text">
-                        <h4>Présence locale</h4>
-                        <p>Connaissance terrain, disponibilité immédiate</p>
-                    </div>
+            <div class="benefits-grid">
+                <div class="benefit">
+                    <h4>✓ Présence Locale</h4>
+                    <p>Connaissance terrain, disponibilité immédiate, réseau de confiance.</p>
                 </div>
-
-                <div class="feature-item">
-                    <div class="feature-check">✓</div>
-                    <div class="feature-text">
-                        <h4>Zéro risque</h4>
-                        <p>Vous payez seulement si résultat</p>
-                    </div>
+                <div class="benefit">
+                    <h4>✓ Zéro Risque</h4>
+                    <p>Vous payez seulement si résultat. Commission basée sur la performance.</p>
                 </div>
-
-                <div class="feature-item">
-                    <div class="feature-check">✓</div>
-                    <div class="feature-text">
-                        <h4>Prospects qualifiés</h4>
-                        <p>Pré-qualifiés et triés avec soin</p>
-                    </div>
+                <div class="benefit">
+                    <h4>✓ Prospects Qualifiés</h4>
+                    <p>Pré-qualifiés et triés avec soin. Taux conversion +40%.</p>
                 </div>
-
-                <div class="feature-item">
-                    <div class="feature-check">✓</div>
-                    <div class="feature-text">
-                        <h4>Multi-secteurs</h4>
-                        <p>Diversification = stabilité assurée</p>
-                    </div>
+                <div class="benefit">
+                    <h4>✓ Multi-Secteurs</h4>
+                    <p>Diversification = stabilité assurée. 4 domaines complémentaires.</p>
                 </div>
-
-                <div class="feature-item">
-                    <div class="feature-check">✓</div>
-                    <div class="feature-text">
-                        <h4>Suivi personnalisé</h4>
-                        <p>Accompagnement complet du processus</p>
-                    </div>
+                <div class="benefit">
+                    <h4>✓ Suivi Personnalisé</h4>
+                    <p>Accompagnement complet du processus. Support 7j/7.</p>
                 </div>
-
-                <div class="feature-item">
-                    <div class="feature-check">✓</div>
-                    <div class="feature-text">
-                        <h4>Aides gouvernementales</h4>
-                        <p>Maximisation des subventions disponibles</p>
-                    </div>
+                <div class="benefit">
+                    <h4>✓ Aides Gouvernementales</h4>
+                    <p>Maximisation des subventions disponibles (ADEME, région).</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Testimonials -->
     <section class="testimonials">
         <div class="container">
-            <h2 class="section-title">Premiers résultats</h2>
-            <div class="testimonial-card">
-                <div class="testimonial-text">"Service rapide et professionnel. Nos équipes satisfaites de la qualité des partenaires proposés."</div>
-                <div class="testimonial-author">— Secteur Hôtellerie</div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="testimonial-text">"Réduction de 20% des coûts administratifs. Recommandé pour les PME cherchant à optimiser."</div>
-                <div class="testimonial-author">— Commerce local, Sainte-Anne</div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="testimonial-text">"Les leads étaient vraiment qualifiées. Accélération de 40% de notre processus commercial."</div>
-                <div class="testimonial-author">— Installateur solaire</div>
+            <h2 class="section-title">Ce que disent nos clients</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <div class="testimonial-text">"Service rapide et professionnel. Nos équipes satisfaites de la qualité des partenaires proposés."</div>
+                    <div class="testimonial-author">— Secteur Hôtellerie, Guadeloupe</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">"Réduction de 20% des coûts administratifs. Recommandé pour les PME cherchant à optimiser."</div>
+                    <div class="testimonial-author">— Commerce local, Sainte-Anne</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">"Les leads étaient vraiment qualifiées. Accélération de 40% de notre processus commercial."</div>
+                    <div class="testimonial-author">— Installateur solaire, Basse-Terre</div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Contact / Form Section -->
     <section class="contact-section" id="contact">
-        <div class="container">
-            <h2>Vous êtes intéressé ?</h2>
-            <p style="margin-bottom: 30px; font-size: 16px;">Décrivez votre besoin. Nous reviendrons vers vous dans 48h avec un plan adapté.</p>
-
-            <form class="contact-form" onsubmit="handleSubmit(event)">
+        <h2>Parlons de votre projet</h2>
+        <div class="form-container">
+            <form id="contactForm" onsubmit="handleSubmit(event)">
                 <div class="form-group">
                     <label for="name">Nom & Prénom *</label>
                     <input type="text" id="name" name="name" required>
                 </div>
-
                 <div class="form-group">
                     <label for="company">Entreprise *</label>
                     <input type="text" id="company" name="company" required>
                 </div>
-
                 <div class="form-group">
                     <label for="phone">Téléphone *</label>
                     <input type="tel" id="phone" name="phone" required>
                 </div>
-
                 <div class="form-group">
                     <label for="email">Email *</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-
                 <div class="form-group">
                     <label for="sector">Secteur *</label>
-                    <input type="text" id="sector" name="sector" placeholder="ex: Hôtellerie, Commerce, Énergie..." required>
+                    <select id="sector" name="sector" required>
+                        <option value="">-- Sélectionner --</option>
+                        <option value="solaire">Énergies renouvelables</option>
+                        <option value="climatisation">Climatisation</option>
+                        <option value="services">Services numériques</option>
+                        <option value="externalisation">Externalisation</option>
+                        <option value="autre">Autre</option>
+                    </select>
                 </div>
-
                 <div class="form-group">
                     <label for="message">Décrivez votre besoin *</label>
                     <textarea id="message" name="message" required></textarea>
                 </div>
-
-                <button type="submit" class="submit-btn">Envoyer ma demande</button>
-                <p style="font-size: 12px; margin-top: 12px; opacity: 0.9;">Confidentialité garantie. Pas de spam.</p>
+                <button type="submit" class="form-submit">📤 Envoyer ma demande</button>
+                <div class="form-note">Confidentialité garantie. Pas de spam. Réponse en 48h.</div>
             </form>
         </div>
     </section>
 
+    <!-- Floating CTA Button -->
+    <button class="floating-cta" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+        💬 Demander une consultation
+    </button>
+
+    <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>BRIO BUSINESS</h4>
-                    <p>Apporteur d'affaires</p>
-                    <p>Guadeloupe 🇬🇵</p>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <a href="tel:+590691287750">+590 691 28 77 50</a>
-                    <a href="mailto:briobusiness.gp@gmail.com">briobusiness.gp@gmail.com</a>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <a href="#services">Énergies renouvelables</a>
-                    <a href="#services">Climatisation</a>
-                    <a href="#services">Services digitaux</a>
-                </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>BRIO BUSINESS</h3>
+                <p>Apporteur d'affaires spécialisé en mise en relation d'entreprises guadeloupéennes.</p>
             </div>
-
-            <p style="border-top: 1px solid #444; padding-top: 20px; color: #888; font-size: 12px;">© 2026 BRIO BUSINESS. Tous droits réservés.</p>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="tel:+590691287750">📞 +590 691 28 77 50</a></li>
+                    <li><a href="mailto:briobusiness.gp@gmail.com">📧 briobusiness.gp@gmail.com</a></li>
+                    <li>📍 Sainte-Anne, Guadeloupe 🇬🇵</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#services">Énergies renouvelables</a></li>
+                    <li><a href="#services">Climatisation</a></li>
+                    <li><a href="#services">Services numériques</a></li>
+                    <li><a href="#services">Externalisation</a></li>
+                </ul>
+            </div>
         </div>
+        <p style="text-align: center; border-top: 1px solid #555; padding-top: 1rem;">© 2026 BRIO BUSINESS. Tous droits réservés.</p>
     </footer>
 
     <script>
         function handleSubmit(event) {
             event.preventDefault();
             const name = document.getElementById('name').value;
-            alert('Merci ' + name + ' ! Votre demande a été envoyée. Nous vous recontacterons dans 48h.');
-            document.querySelector('.contact-form').reset();
-        }
+            const company = document.getElementById('company').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const sector = document.getElementById('sector').value;
+            const message = document.getElementById('message').value;
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({behavior: 'smooth'});
-                }
-            });
-        });
+            // Prepare WhatsApp/Email message
+            const bodyMessage = `Nouvelle demande de consultation:%0A%0ANom: ${name}%0AEntreprise: ${company}%0ATéléphone: ${phone}%0AEmail: ${email}%0ASecteur: ${sector}%0A%0AMémo: ${message}`;
+
+            // Send to WhatsApp
+            window.open(`https://wa.me/590691287750?text=${bodyMessage}`, '_blank');
+
+            // Also send email
+            window.location.href = `mailto:briobusiness.gp@gmail.com?subject=Nouvelle%20demande%20-%20${company}&body=${bodyMessage}`;
+
+            // Reset form
+            document.getElementById('contactForm').reset();
+            alert('Merci! Nous vous recontacterons dans les 48h.');
+        }
     </script>
 </body>
 </html>
